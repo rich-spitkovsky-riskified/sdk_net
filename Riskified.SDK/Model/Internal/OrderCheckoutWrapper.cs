@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Riskified.SDK.Model.OrderElements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,12 @@ namespace Riskified.SDK.Model.Internal
 
         [JsonProperty(PropertyName = "warnings")]
         public string[] Warnings { get; set; }
+
+        [JsonProperty(PropertyName = "authentication_type")]
+        public AuthenticationType AuthenticationType { get; set; }
+
+        [JsonProperty(PropertyName = "score")]
+        public int Score { get; set; }
 
         public OrderCheckoutWrapper(TOrderCheckout order)
         {

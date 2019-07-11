@@ -77,7 +77,8 @@ namespace Riskified.SDK.Model
                      string name = null,
                      string orderType = null,
                      SubmissionReason? submissionReason = null,
-                     Custom custom = null)
+                     Custom custom = null,
+                     AuthenticationResult authenticationResult = null)
             : base(merchantOrderId)
         {
             LineItems = lineItems;
@@ -117,6 +118,7 @@ namespace Riskified.SDK.Model
             Note = note;
             OrderType = orderType;
             SubmissionReason = submissionReason;
+            AuthenticationResult = authenticationResult;
 
             // This field is added for gift card group purchase
             GroupFounderOrderID = groupFounderOrderID;

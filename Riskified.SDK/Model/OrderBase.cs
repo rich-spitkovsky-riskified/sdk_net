@@ -179,7 +179,10 @@ namespace Riskified.SDK.Model
         public string OrderType { get; set; }
         
         [JsonProperty(PropertyName = "custom")]
-        public Custom Custom { get; set; } 
+        public Custom Custom { get; set; }
+
+        [JsonProperty(PropertyName = "authentication_result")]
+        public AuthenticationResult AuthenticationResult { get; set; }
 
     }
 }

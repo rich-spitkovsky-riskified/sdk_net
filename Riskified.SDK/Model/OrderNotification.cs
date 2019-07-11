@@ -14,6 +14,8 @@ namespace Riskified.SDK.Model
             Custom = notificationInfo.Order.Custom;
             Category = notificationInfo.Order.Category;
             DecisionCode = notificationInfo.Order.DecisionCode;
+            Score = notificationInfo.Order.Score;
+            AuthenticationType = notificationInfo.Order.AuthenticationType;
             Warnings = notificationInfo.Warnings;
         }
 
@@ -26,6 +28,8 @@ namespace Riskified.SDK.Model
             Custom = notificationInfo.Order.Custom;
             Category = notificationInfo.Order.Category;
             Warnings = notificationInfo.Warnings;
+            AuthenticationType = notificationInfo.AuthenticationType;
+            Score = notificationInfo.Score; 
         }
 
         public string Id { get; private set; }
@@ -36,5 +40,8 @@ namespace Riskified.SDK.Model
         public string Category { get; private set; }
         public string DecisionCode { get; private set; }
         public string[] Warnings { get; private set; }
+        public int Score { get; private set; }
+        public AuthenticationType AuthenticationType { get; private set; }
+
     }
 }

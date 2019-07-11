@@ -135,9 +135,14 @@
     <Compile Include="Model\AccountActionElements\CustomerCreate.cs" />
     <Compile Include="Model\AccountActionElements\AccountActionNotification.cs" />
     <Compile Include="Model\OrderIdOnly.cs" />
+    <Compile Include="Model\OrderElements\RegistryType.cs" />
+    <Compile Include="Model\OrderAdvise.cs" />
+    <Compile Include="Model\OrderElements\AuthenticationResult.cs" />
+    <Compile Include="Model\OrderElements\AuthenticationType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Riskified.SDK.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\AccountActionElements\" />
