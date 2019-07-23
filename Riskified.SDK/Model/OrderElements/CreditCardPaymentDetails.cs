@@ -22,7 +22,12 @@ namespace Riskified.SDK.Model.OrderElements
                                         string creditCardCompany, 
                                         string creditCardNumber, 
                                         string authorizationId = null,
-                                        string creditCardToken = null)
+                                        string creditCardToken = null,
+                                        string _type = null,
+                                        string id = null,
+                                        string gateway = null,
+                                        string acquirerBin = null,
+                                        string mid = null)
         {
             AvsResultCode = avsResultCode;
             CvvResultCode = cvvResultCode;
@@ -31,6 +36,11 @@ namespace Riskified.SDK.Model.OrderElements
             CreditCardNumber = creditCardNumber;
             AuthorizationId = authorizationId;
             CreditCardToken = creditCardToken;
+            _Type = _type;
+            Id = id;
+            Gateway = gateway;
+            AcquirerBin = acquirerBin;
+            Mid = mid; 
         }
 
         /// <summary>

@@ -17,8 +17,8 @@ namespace Riskified.SDK.Model.OrderElements
         /// <param name="payerAddressStatus">The payer address status as received from paypal</param>
         /// <param name="protectionEligibility">The merchants protection eligibility for the order as received from paypal</param>
         /// <param name="pendingReason">The pending reason received from paypal</param>
-        public PaypalPaymentDetails(string paymentStatus, string authorizationId = null, string payerEmail = null, string payerStatus = null, string payerAddressStatus = null , 
-            string protectionEligibility = null , string pendingReason = null)
+        public PaypalPaymentDetails(string paymentStatus, string authorizationId = null, string payerEmail = null, string payerStatus = null, string payerAddressStatus = null,
+            string protectionEligibility = null, string pendingReason = null, string _type = null, string id = null, string gateway = null, string acquirerBin = null, string mid = null)
         {
             AuthorizationId = authorizationId;
             PayerEmail = payerEmail;
@@ -26,7 +26,13 @@ namespace Riskified.SDK.Model.OrderElements
             PayerAddressStatus = payerAddressStatus;
             ProtectionEligibility = protectionEligibility;
             PaymentStatus = paymentStatus;
-            PendingReason = PendingReason;
+            PendingReason = pendingReason;
+            _Type = _type;
+            Id = id;
+            Gateway = gateway;
+            AcquirerBin = acquirerBin;
+            Mid = mid; 
+
         }
 
         /// <summary>
@@ -65,6 +71,21 @@ namespace Riskified.SDK.Model.OrderElements
 
         [JsonProperty(PropertyName = "authorization_error")]
         public AuthorizationError AuthorizationError { get; set; }
+
+        [JsonProperty(PropertyName = "_type")]
+        public string _Type { get; set; }
+
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        [JsonProperty(PropertyName = "gateway")]
+        public string Gateway { get; set; }
+
+        [JsonProperty(PropertyName = "acquirer_bin")]
+        public string AcquirerBin { get; set; }
+
+        [JsonProperty(PropertyName = "mid")]
+        public string Mid { get; set; }
 
     }
 }

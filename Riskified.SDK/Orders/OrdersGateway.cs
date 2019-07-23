@@ -70,6 +70,11 @@ namespace Riskified.SDK.Orders
             return SendOrderCheckout(orderCheckout, HttpUtils.BuildUrl(_env, "/api/checkout_create"));
         }
 
+        public OrderNotification Advise(Order order)
+        {
+            return SendOrderCheckout(order, HttpUtils.BuildUrl(_env, "/api/advise"));
+        }
+
         /// <summary>
         /// Validates the Order checkout object fields (All fields except merchendOrderId are optional)
         /// Sends a new order checkout to Riskified Servers (without Submit for analysis)

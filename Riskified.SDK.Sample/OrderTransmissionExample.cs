@@ -47,6 +47,7 @@ namespace Riskified.SDK.Sample
             // read action from console
             const string menu = "Commands:\n" +
                                 "'p' for checkout\n" +
+                                "'a' for advise\n" +
                                 "'e' for checkout denied\n" +
                                 "'c' for create\n" +
                                 "'u' for update\n" +
@@ -113,6 +114,13 @@ namespace Riskified.SDK.Sample
 
                             // sending order checkout for creation (if new orderNum) or update (if existing orderNum)
                             res = gateway.CheckoutDenied(orderCheckoutDenied);
+                            break;
+                        case "a":
+                            Console.WriteLine("Order advise Generated with merchant order number: " + orderNum);
+                            order.Id = orderNum.ToString();
+                            orderNum++;
+                            //sending order for advise call
+                            res = gateway.Advise(order);
                             break;
                         case "c":
                             Console.WriteLine("Order Generated with merchant order number: " + orderNum);
@@ -283,9 +291,10 @@ namespace Riskified.SDK.Sample
 
                     if (res != null)
                     {
-                        Console.WriteLine("\n\nOrder sent successfully:" +
+                        Console.WriteLine("\n\nOrder sent successfully: " + res +
                                               "\nStatus at Riskified: " + res.Status +
                                               "\nOrder ID received:" + res.Id +
+                                              //"\nAuth Type is:" + (res.AuthenticationType == null ? "No Auth Type, it's null" : "Time to work on the notification!") +
                                               "\nDescription: " + res.Description +
                                               "\nWarnings: " + (res.Warnings == null ? "---" : string.Join("        \n", res.Warnings)) + "\n\n");
                     }
@@ -633,17 +642,17 @@ namespace Riskified.SDK.Sample
                     departureCountryCode: "IL",
                     transportMethod: TransportMethodType.Plane), 
                 // Accomodation reservation product (appliciable for travel industry merchants)
-                new AccommodationLineItem(
-                    title: "Hotel Arcadia - Standard Room", 
-                    price: 476, 
-                    quantityPurchased: 1, 
-                    productId: "123", 
-                    city: "London",
-                    countryCode: "GB",
-                    rating: "5",
-                    numberOfGuests: 2,
-                    cancellationPolicy: "Not appliciable",
-                    accommodationType: "Hotel")
+                //new AccommodationLineItem(
+                    //title: "Hotel Arcadia - Standard Room", 
+                    //price: 476, 
+                    //quantityPurchased: 1, 
+                    //productId: "123", 
+                    //city: "London",
+                    //countryCode: "GB",
+                    //rating: "5",
+                    //numberOfGuests: 2,
+                    //cancellationPolicy: "Not appliciable",
+                    //accommodationType: "Hotel")
             };
 
             var discountCodes = new[] { new DiscountCode(moneyDiscountSum: 7, code: "1") };
@@ -686,7 +695,7 @@ namespace Riskified.SDK.Sample
                 vendorId: "2",
                 vendorName: "domestic",
                 additionalEmails: new[] { "a@a.com", "b@b.com" },
-                chargeFreePaymentDetails: chargeFreePayments,
+                //chargeFreePaymentDetails: chargeFreePayments,
                 clientDetails: clientDetails,
                 custom: custom,
                 groupFounderOrderID: "2222",
