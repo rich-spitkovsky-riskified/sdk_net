@@ -349,12 +349,12 @@ namespace Riskified.SDK.Sample
                                 cardholder: "John Smith",
                                 message: "Cardholder disputes quality/ mischaracterization of service/merchandise. Supply detailed refute of these claims, along with any applicable/supporting doc");
 
-            var fulfillmentDetails = new FulfillmentDetails(
+            var fulfillmentDetails = new[]{new FulfillmentDetails(
                                              fulfillmentId: "123",
                                              createdAt: new DateTime(2015, 12, 8, 14, 12, 12, DateTimeKind.Local),
                                              status: FulfillmentStatusCode.Success,
                                              lineItems: new LineItem[] { new LineItem("Bag", 10.0, 1) },
-                                             trackingCompany: "TestCompany");
+                                             trackingCompany: "TestCompany")};
 
             var disputeDetails = new DisputeDetails(
                                         disputeType: "first_dispute",
