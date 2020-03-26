@@ -138,6 +138,20 @@ namespace Riskified.SDK.Orders
         /// <returns>The order notification result containing status, decision, description and sent order id in case of successful transfer</returns>
         /// <exception cref="OrderFieldBadFormatException">On bad format of the order (missing fields data or invalid data)</exception>
         /// <exception cref="RiskifiedTransactionException">On errors with the transaction itself (network errors, bad response data)</exception>
+        public OrderNotification Screen(Order order)
+        {
+            return SendOrder(order, HttpUtils.BuildUrl(_env, "/api/screen", FlowStrategy.Sync));
+        }
+
+
+        /// <summary>
+        /// Validates the Order object fields
+        /// Send an Order to Riskified, will be synchronously reviewed based on current plan
+        /// </summary>
+        /// <param name="order">The Order to make a synchronous decision (sync plan only)</param>
+        /// <returns>The order notification result containing status, decision, description and sent order id in case of successful transfer</returns>
+        /// <exception cref="OrderFieldBadFormatException">On bad format of the order (missing fields data or invalid data)</exception>
+        /// <exception cref="RiskifiedTransactionException">On errors with the transaction itself (network errors, bad response data)</exception>
         public OrderNotification Decide(Order order)
         {
             return SendOrder(order, HttpUtils.BuildUrl(_env, "/api/decide", FlowStrategy.Sync));
