@@ -64,7 +64,7 @@ namespace Riskified.SDK.Model
                      DateTime? closedAt = null,
                      string financialStatus = null,
                      string fulfillmentStatus = null,
-                     string source = null,
+                     Source? source = null,
                      NoChargeDetails noChargeDetails = null,
                      string[] additionalEmails = null,
                      string vendorId = null,
