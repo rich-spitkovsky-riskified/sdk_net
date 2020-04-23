@@ -138,10 +138,15 @@ namespace Riskified.SDK.Orders
         /// <returns>The order notification result containing status, decision, description and sent order id in case of successful transfer</returns>
         /// <exception cref="OrderFieldBadFormatException">On bad format of the order (missing fields data or invalid data)</exception>
         /// <exception cref="RiskifiedTransactionException">On errors with the transaction itself (network errors, bad response data)</exception>
-        public OrderNotification Screen(Order order)
+        public OrderNotification Screen(OrderCheckout orderCheckout)
         {
-            return SendOrder(order, HttpUtils.BuildUrl(_env, "/api/screen", FlowStrategy.Sync));
+            return SendOrderCheckout(orderCheckout, HttpUtils.BuildUrl(_env, "/api/screen", FlowStrategy.Screen));
         }
+
+        //public OrderNotification Checkout(OrderCheckout orderCheckout)
+        //{
+        //    return SendOrderCheckout(orderCheckout, HttpUtils.BuildUrl(_env, "/api/checkout_create"));
+        //}
 
 
         /// <summary>

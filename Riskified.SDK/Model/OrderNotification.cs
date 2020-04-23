@@ -15,6 +15,7 @@ namespace Riskified.SDK.Model
             Category = notificationInfo.Order.Category;
             DecisionCode = notificationInfo.Order.DecisionCode;
             Warnings = notificationInfo.Warnings;
+            Action = notificationInfo.Order.Action;
         }
 
         internal OrderNotification(OrderCheckoutWrapper<Notification> notificationInfo)
@@ -28,6 +29,7 @@ namespace Riskified.SDK.Model
             Warnings = notificationInfo.Warnings;
             Score = notificationInfo.Order.Score;
             AuthenticationType = notificationInfo.Order.AuthenticationType;
+            Action = notificationInfo.Order.Action;
         }
 
         public string Id { get; private set; }
@@ -40,5 +42,6 @@ namespace Riskified.SDK.Model
         public string[] Warnings { get; private set; }
         public int Score { get; set; }
         public AuthenticationType AuthenticationType { get; private set; }
+        public string Action { get; set; }
     }
 }

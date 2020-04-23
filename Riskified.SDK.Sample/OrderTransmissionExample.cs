@@ -47,6 +47,8 @@ namespace Riskified.SDK.Sample
             // read action from console
             const string menu = "Commands:\n" +
                                 "'p' for checkout\n" +
+                                "'sc' for screen\n" +
+                                "'a' for advise\n" +
                                 "'e' for checkout denied\n" +
                                 "'c' for create\n" +
                                 "'u' for update\n" +
@@ -88,6 +90,7 @@ namespace Riskified.SDK.Sample
                 try
                 {
                     OrderNotification res = null;
+                    OrderNotification screenRes = null;
                     AccountActionNotification accRes = null;
                     switch (commandStr)
                     {
@@ -101,6 +104,14 @@ namespace Riskified.SDK.Sample
 
                             // sending order checkout for creation (if new orderNum) or update (if existing orderNum)
                             res = gateway.Checkout(orderCheckout);
+                            break;
+                        case "sc":
+                            Console.WriteLine("Order screen Generated with merchant order number: " + orderNum);
+                            var orderScreenCheckout = GenerateOrderCheckout(orderNum.ToString());
+                            orderScreenCheckout.Id = orderNum.ToString();
+
+                            // sending order screen for creation (if new orderNum) or update (if existing orderNum)
+                            screenRes = gateway.Screen(orderScreenCheckout);
                             break;
                         case "a":
                             Console.WriteLine("Order Advise Generated with merchant order number: " + orderNum);
@@ -302,6 +313,13 @@ namespace Riskified.SDK.Sample
                     {
                         Console.WriteLine("\n\nAccount Action sent successfully:" +
                                           "\nDecision: " + accRes.Decision);
+                    }
+
+                    if (screenRes != null)
+                    {
+                        Console.WriteLine("\n\nScreen Order sent successfully:" +
+                            "\nCheckout ID received:" + screenRes.Id +
+                            "\nAction:" + screenRes.Action);
                     }
                 }
                 catch (OrderFieldBadFormatException e)

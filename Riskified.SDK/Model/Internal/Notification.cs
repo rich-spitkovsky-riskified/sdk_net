@@ -35,5 +35,8 @@ namespace Riskified.SDK.Model.Internal
         [JsonProperty(PropertyName = "authentication_type", Required = Required.Default)]
         public AuthenticationType AuthenticationType { get; set; }
 
+        [JsonProperty(PropertyName = "action", Required = Required.Default)]
+        public string Action { get; set; }
+
     }
 }
