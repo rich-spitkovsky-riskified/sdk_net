@@ -31,9 +31,9 @@ namespace Riskified.SDK.Model
         }
 
         public string Id { get; private set; }
-        public string Status { get; private set; }
+        public string Status { get; set; }
         public string OldStatus { get; private set; }
-        public string Description { get; private set; }
+        public string Description { get; set; }
         public Custom Custom { get; private set; }
         public string Category { get; private set; }
         public string DecisionCode { get; private set; }

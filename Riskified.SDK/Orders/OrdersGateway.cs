@@ -78,6 +78,25 @@ namespace Riskified.SDK.Orders
             return SendOrderCheckout(orderCheckout, HttpUtils.BuildUrl(_env, "/api/advise"));
         }
 
+        public OrderNotification AdviseDecide(OrderBase order)
+        {
+            //var adviseOrder = new OrderCheckoutWrapper<OrderBase>(order);
+            var adviseResponse = SendOrderCheckout(order, HttpUtils.BuildUrl(_env, "api/advise"));
+            var authType = adviseResponse.AuthenticationType.AuthType; 
+            if (authType == "out_of_scope")
+            {
+                var decideResponse = SendOrder(order, HttpUtils.BuildUrl(_env, "api/decide", FlowStrategy.Sync));
+                var decideStatus = decideResponse.Status;
+                var decideDescription = decideResponse.Description;
+                adviseResponse.Status = decideStatus;
+                adviseResponse.Description = decideDescription;
+                return adviseResponse; 
+            } else
+            {
+                return adviseResponse; 
+            }
+        }
+
         /// <summary>
         /// Validates the Order checkout object fields (All fields except merchendOrderId are optional)
         /// Sends a new order checkout to Riskified Servers (without Submit for analysis)
